@@ -1,25 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
+// *********** Style import*********
 import './App.css';
+
+// *********** Components***********
+import Navmenu from './Components/Navmenu/Navmenu'
+import { Container, Row } from 'react-bootstrap';
+
+const names = [{ name: 'Home', isActive: true, link: "'www.google.com'", dropDown: null },
+{ name: 'Services', isActive: false, link: "/", dropDown: [{ subname: "For entrepreneurs", sublink: "/" }, { subname: "For students", sublink: "/" }, { subname: "For hobbyists", sublink: "/" }] },
+{ name: 'Contact', isActive: false, link: "/", dropDown: null }]
+// 
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Row>
+        {names.map(el => <Navmenu name={el.name} isActive={el.isActive} link={el.link} dropDown={el.dropDown} />)}
+      </Row>
+    </Container>
+
   );
 }
 
